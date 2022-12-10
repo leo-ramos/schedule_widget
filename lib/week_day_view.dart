@@ -5,6 +5,11 @@ import 'package:schedule_widget/src/utils/utilities.dart';
 import 'package:schedule_widget/src/widgets/task_container.dart';
 
 class WeekDayView extends StatelessWidget {
+
+  //actions
+  final VoidCallback? onPress;
+  final VoidCallback? onLongPress;
+
   //task
   final List<Task> tasks;
   final Color? taskCardColor;
@@ -18,6 +23,9 @@ class WeekDayView extends StatelessWidget {
 
   final String locale;
 
+  final ScrollController? controller;
+  final ScrollPhysics? scrollPhysics;
+
   const WeekDayView(
       {Key? key,
       required this.tasks,
@@ -27,7 +35,11 @@ class WeekDayView extends StatelessWidget {
       this.highlightTextColor,
       this.highlightBackgroundColor,
       this.textColor,
-      this.locale = 'en_US'})
+      this.controller,
+      this.scrollPhysics,
+      this.locale = 'en_US', 
+      this.onPress, 
+      this.onLongPress})
       : super(key: key);
 
   @override
@@ -36,6 +48,8 @@ class WeekDayView extends StatelessWidget {
     Utilities.sortList(tasks, SortByType.DAY);
     return ListView.builder(
       itemCount: tasks.length,
+      controller: controller,
+      physics: scrollPhysics,
       itemBuilder: (context, index) {
         final model = tasks[index];
         return Row(
@@ -69,6 +83,8 @@ class WeekDayView extends StatelessWidget {
                   boxColor: taskCardColor ?? Colors.grey,
                   titleColor: taskTitleColor,
                   subtitleColor: taskSubtitleColor,
+                  onLongPress: onLongPress,
+                  onPress: onPress,
                 ),
               ),
             )

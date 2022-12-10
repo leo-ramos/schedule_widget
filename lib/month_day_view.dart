@@ -6,6 +6,11 @@ import 'package:schedule_widget/src/widgets/month_container.dart';
 import 'package:schedule_widget/src/widgets/task_container.dart';
 
 class MothDayView extends StatelessWidget {
+
+  //actions
+  final VoidCallback? onPress;
+  final VoidCallback? onLongPress;
+
   //task
   final List<Task> tasks;
   final Color? taskCardColor;
@@ -17,11 +22,14 @@ class MothDayView extends StatelessWidget {
   final Color? highlightBackgroundColor;
   final Color? textColor;
 
-  //moth
+  //month
   final Color? mothCardColor;
   final Color? mothTextColor;
 
   final String locale;
+
+  final ScrollController? controller;
+  final ScrollPhysics? scrollPhysics;
 
   const MothDayView({
     Key? key,
@@ -34,7 +42,11 @@ class MothDayView extends StatelessWidget {
     this.textColor,
     this.mothCardColor,
     this.mothTextColor,
-    this.locale = 'en_US',
+    this.controller,
+    this.scrollPhysics,
+    this.locale = 'en_US', 
+    this.onPress, 
+    this.onLongPress,
   }) : super(key: key);
 
   @override
@@ -43,6 +55,8 @@ class MothDayView extends StatelessWidget {
     Utilities.sortList(tasks, SortByType.MOTH);
     return ListView.builder(
       itemCount: tasks.length,
+      controller: controller,
+      physics: scrollPhysics,
       itemBuilder: (context, index) {
         final model = tasks[index];
         return Column(
@@ -85,7 +99,9 @@ class MothDayView extends StatelessWidget {
                       subtitle: model.subtitle,
                       boxColor: taskCardColor ?? Colors.grey,
                       titleColor: taskTitleColor,
-                      subtitleColor: taskSubtitleColor,
+                      subtitleColor: taskSubtitleColor, 
+                      onLongPress: onLongPress, 
+                      onPress: onPress,
                     ),
                   ),
                 )

@@ -3,19 +3,7 @@ import 'package:schedule_widget/src/models/task.dart';
 
 class Utilities {
   static List<Task> sortList(List<Task> tasks, SortByType type) {
-    switch (type) {
-      case SortByType.DAY:
-        tasks.sort((a, b) => a.date.day.compareTo(b.date.day));
-        break;
-      case SortByType.MOTH:
-        tasks.sort((a, b) => a.date.day.compareTo(b.date.day));
-        tasks.sort((a, b) => a.date.month.compareTo(b.date.month));
-        break;
-
-      default:
-        tasks.sort((a, b) => a.date.day.compareTo(b.date.day));
-        break;
-    }
+    tasks.sort((a, b) => a.date.compareTo(b.date));
     return tasks;
   }
 

@@ -2,12 +2,16 @@
 
 Displays a highly customizable schedule view (with or without month card) which is able to display events and to be scrolled.
 
+<p>
+<img src="https://raw.githubusercontent.com/leo-ramos/schedule_widget/master/art/image1.png" alt="Screenshot month day view" width="250">
+</p>
+
 ## Getting started
 
 You should ensure that you add the router as a dependency in your flutter project.
 ```yaml
 dependencies:
- schedule_widget: 0.0.1
+ schedule_widget: 0.0.2
 ```
 You should then run `flutter packages upgrade` or update your packages in IntelliJ.
 
@@ -16,7 +20,7 @@ You should then run `flutter packages upgrade` or update your packages in Intell
 Need to include the import the package to the dart file where it will be used, use the below command,
 
 ```dart
-import 'package:schedule_widget/moth_day_view.dart';
+import 'package:schedule_widget/month_day_view.dart';
 ```
 or 
 ```dart
