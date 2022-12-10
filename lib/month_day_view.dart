@@ -7,10 +7,6 @@ import 'package:schedule_widget/src/widgets/task_container.dart';
 
 class MothDayView extends StatelessWidget {
 
-  //actions
-  final VoidCallback? onPress;
-  final VoidCallback? onLongPress;
-
   //task
   final List<Task> tasks;
   final Color? taskCardColor;
@@ -44,9 +40,7 @@ class MothDayView extends StatelessWidget {
     this.mothTextColor,
     this.controller,
     this.scrollPhysics,
-    this.locale = 'en_US', 
-    this.onPress, 
-    this.onLongPress,
+    this.locale = 'en_US',
   }) : super(key: key);
 
   @override
@@ -100,8 +94,8 @@ class MothDayView extends StatelessWidget {
                       boxColor: taskCardColor ?? Colors.grey,
                       titleColor: taskTitleColor,
                       subtitleColor: taskSubtitleColor, 
-                      onLongPress: onLongPress, 
-                      onPress: onPress,
+                      onLongPress: model.onLongPress, 
+                      onPress: model.onPress,
                     ),
                   ),
                 )

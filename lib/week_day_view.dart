@@ -6,10 +6,6 @@ import 'package:schedule_widget/src/widgets/task_container.dart';
 
 class WeekDayView extends StatelessWidget {
 
-  //actions
-  final VoidCallback? onPress;
-  final VoidCallback? onLongPress;
-
   //task
   final List<Task> tasks;
   final Color? taskCardColor;
@@ -37,9 +33,7 @@ class WeekDayView extends StatelessWidget {
       this.textColor,
       this.controller,
       this.scrollPhysics,
-      this.locale = 'en_US', 
-      this.onPress, 
-      this.onLongPress})
+      this.locale = 'en_US'})
       : super(key: key);
 
   @override
@@ -83,8 +77,8 @@ class WeekDayView extends StatelessWidget {
                   boxColor: taskCardColor ?? Colors.grey,
                   titleColor: taskTitleColor,
                   subtitleColor: taskSubtitleColor,
-                  onLongPress: onLongPress,
-                  onPress: onPress,
+                  onLongPress: model.onLongPress,
+                  onPress: model.onPress,
                 ),
               ),
             )

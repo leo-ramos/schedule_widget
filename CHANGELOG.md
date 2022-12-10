@@ -1,3 +1,7 @@
 ## 0.0.1
 
 * TODO: Describe initial release.
+
+## 0.0.2
+
+* Adjustment in the export of the 'Task' model class and inclusion of optional parameters
