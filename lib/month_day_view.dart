@@ -91,12 +91,12 @@ class MothDayView extends StatelessWidget {
                     child: TaskContainer(
                       title: model.title,
                       subtitle: model.subtitle,
-                      boxColor: taskCardColor ?? Colors.grey,
-                      titleColor: taskTitleColor,
-                      subtitleColor: taskSubtitleColor, 
-                      onLongPress: model.onLongPress, 
+                      boxColor: model.taskCardColor ?? (taskCardColor ?? Colors.grey),
+                      titleColor: model.taskTitleColor ?? taskTitleColor,
+                      subtitleColor: model.taskSubtitleColor ?? taskSubtitleColor,
+                      onLongPress: model.onLongPress,
                       onPress: model.onPress,
-                    ),
+                   ),
                   ),
                 )
               ],
