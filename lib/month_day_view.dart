@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:schedule_widget/src/models/task.dart';
@@ -6,7 +7,6 @@ import 'package:schedule_widget/src/widgets/month_container.dart';
 import 'package:schedule_widget/src/widgets/task_container.dart';
 
 class MothDayView extends StatelessWidget {
-
   //task
   final List<Task> tasks;
   final Color? taskCardColor;
@@ -27,6 +27,8 @@ class MothDayView extends StatelessWidget {
   final ScrollController? controller;
   final ScrollPhysics? scrollPhysics;
 
+  final bool shrinkWrap;
+
   const MothDayView({
     Key? key,
     required this.tasks,
@@ -38,9 +40,10 @@ class MothDayView extends StatelessWidget {
     this.textColor,
     this.mothCardColor,
     this.mothTextColor,
+    this.locale = 'en_US',
     this.controller,
     this.scrollPhysics,
-    this.locale = 'en_US',
+    this.shrinkWrap = false,
   }) : super(key: key);
 
   @override
@@ -51,6 +54,7 @@ class MothDayView extends StatelessWidget {
       itemCount: tasks.length,
       controller: controller,
       physics: scrollPhysics,
+      shrinkWrap: shrinkWrap,
       itemBuilder: (context, index) {
         final model = tasks[index];
         return Column(
@@ -96,7 +100,7 @@ class MothDayView extends StatelessWidget {
                       subtitleColor: model.taskSubtitleColor ?? taskSubtitleColor,
                       onLongPress: model.onLongPress,
                       onPress: model.onPress,
-                   ),
+                    ),
                   ),
                 )
               ],

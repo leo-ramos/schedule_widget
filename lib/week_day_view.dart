@@ -5,7 +5,6 @@ import 'package:schedule_widget/src/utils/utilities.dart';
 import 'package:schedule_widget/src/widgets/task_container.dart';
 
 class WeekDayView extends StatelessWidget {
-
   //task
   final List<Task> tasks;
   final Color? taskCardColor;
@@ -22,19 +21,22 @@ class WeekDayView extends StatelessWidget {
   final ScrollController? controller;
   final ScrollPhysics? scrollPhysics;
 
-  const WeekDayView(
-      {Key? key,
-      required this.tasks,
-      this.taskCardColor,
-      this.taskTitleColor,
-      this.taskSubtitleColor,
-      this.highlightTextColor,
-      this.highlightBackgroundColor,
-      this.textColor,
-      this.controller,
-      this.scrollPhysics,
-      this.locale = 'en_US'})
-      : super(key: key);
+  final bool shrinkWrap;
+
+  const WeekDayView({
+    Key? key,
+    required this.tasks,
+    this.taskCardColor,
+    this.taskTitleColor,
+    this.taskSubtitleColor,
+    this.highlightTextColor,
+    this.highlightBackgroundColor,
+    this.textColor,
+    this.controller,
+    this.scrollPhysics,
+    this.locale = 'en_US',
+    this.shrinkWrap = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class WeekDayView extends StatelessWidget {
       itemCount: tasks.length,
       controller: controller,
       physics: scrollPhysics,
+      shrinkWrap: shrinkWrap,
       itemBuilder: (context, index) {
         final model = tasks[index];
         return Row(
@@ -74,7 +77,7 @@ class WeekDayView extends StatelessWidget {
                 child: TaskContainer(
                   title: model.title,
                   subtitle: model.subtitle,
-                  boxColor:  model.taskCardColor ?? (taskCardColor ?? Colors.grey),
+                  boxColor: model.taskCardColor ?? (taskCardColor ?? Colors.grey),
                   titleColor: model.taskTitleColor ?? taskTitleColor,
                   subtitleColor: model.taskSubtitleColor ?? taskSubtitleColor,
                   onLongPress: model.onLongPress,
