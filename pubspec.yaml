@@ -1,6 +1,6 @@
 name: schedule_widget
 description: A Flutter package to show beatify schedules containers.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/leo-ramos/schedule_widget
 
 environment:

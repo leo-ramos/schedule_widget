@@ -11,7 +11,7 @@ Displays a highly customizable schedule view (with or without month card) which 
 You should ensure that you add the router as a dependency in your flutter project.
 ```yaml
 dependencies:
- schedule_widget: 0.0.2
+ schedule_widget: 0.0.3
 ```
 You should then run `flutter packages upgrade` or update your packages in IntelliJ.
 
